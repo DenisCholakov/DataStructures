@@ -71,11 +71,31 @@ public class TreeTest {
             assertEquals(expected[index++], num);
         }
     }
-	
-	@Test
+
+    @Test
+    public void testRemoveRootNode() {
+        tree.removeNode(7);
+
+        List<Integer> integers = tree.orderBfs();
+        assertEquals(0, integers.size());
+    }
+
+    @Test
     public void testSwap() {
         tree.swap(19, 14);
         Integer[] expected = {7, 14, 21, 19, 23, 6, 1, 12, 31};
+        List<Integer> integers = tree.orderBfs();
+        assertEquals(expected.length, integers.size());
+        int index = 0;
+        for (Integer num : integers) {
+            assertEquals(expected[index++], num);
+        }
+    }
+
+    @Test
+    public void testSwapWithRootNode() {
+        tree.swap(19, 7);
+        Integer[] expected = {19, 1, 12, 31};
         List<Integer> integers = tree.orderBfs();
         assertEquals(expected.length, integers.size());
         int index = 0;
